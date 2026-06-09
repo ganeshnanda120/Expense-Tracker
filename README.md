@@ -147,6 +147,3 @@ Created as a comprehensive Flutter learning project demonstrating core Flutter c
 
 **Happy Expense Tracking! 💰**
 =======
-# My-Portfolio
-it is the website about my skills, projects and experiences.
->>>>>>> 729ee6a913ef1a351372b6ea1dfe63d2bf1b769a
