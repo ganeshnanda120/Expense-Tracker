@@ -221,28 +221,40 @@ return AlertDialog(
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Expense Tracker',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+        title: Image.asset(
+          'assets/images/logo_full.png',
+          height: 38,
+          fit: BoxFit.contain,
         ),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
         elevation: 0,
         centerTitle: true,
       ),
       body: Column(
         children: [
           Container(
-            color: Colors.blueAccent,
+            color: Colors.white,
             width: double.infinity,
-            padding: const EdgeInsets.all(20),
-            child: Card(
-              elevation: 4,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [
+                    Color(0xFF0E8A71),
+                    Color(0xFF00B497),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF0E8A71).withValues(alpha: 0.3),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
               ),
               child: Padding(
                 padding: const EdgeInsets.all(20),
@@ -252,7 +264,8 @@ return AlertDialog(
                       'Total Spent',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.grey,
+                        color: Colors.white70,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -261,15 +274,23 @@ return AlertDialog(
                       style: const TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blueAccent,
+                        color: Colors.white,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Text(
-                      '${expenses.length} expense${expenses.length != 1 ? 's' : ''}',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.white24,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        '${expenses.length} expense${expenses.length != 1 ? 's' : ''}',
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
@@ -286,7 +307,8 @@ return AlertDialog(
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: showAddExpenseDialog,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: const Color(0xFF0E8A71),
+        foregroundColor: Colors.white,
         tooltip: 'Add Expense',
         child: const Icon(Icons.add),
       ),
@@ -295,32 +317,39 @@ return AlertDialog(
 
   Widget buildEmptyState() {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.receipt_long,
-            size: 80,
-            color: Colors.grey[300],
-          ),
-          const SizedBox(height: 16),
-          Text(
-            'No Expenses Added Yet',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey[600],
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Opacity(
+              opacity: 0.6,
+              child: Image.asset(
+                'assets/images/logo_icon.png',
+                height: 120,
+                width: 120,
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Tap the + button to add your first expense',
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey[500],
+            const SizedBox(height: 24),
+            const Text(
+              'No Expenses Added Yet',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF0E8A71),
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 8),
+            Text(
+              'Tap the + button to add your first expense',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -343,12 +372,12 @@ return AlertDialog(
               width: 50,
               height: 50,
               decoration: BoxDecoration(
-                color: Colors.blueAccent.withValues(alpha: 0.2),
+                color: const Color(0xFF0E8A71).withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(
                 Icons.shopping_bag,
-                color: Colors.blueAccent,
+                color: Color(0xFF0E8A71),
               ),
             ),
             title: Text(
@@ -367,13 +396,14 @@ return AlertDialog(
             ),
             trailing: Wrap(
               spacing: 8,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Text(
                   expense.formattedAmount,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blueAccent,
+                    color: Color(0xFF0E8A71),
                   ),
                 ),
                 IconButton(

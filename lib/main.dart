@@ -11,10 +11,20 @@ class ExpenseTrackerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Expense Tracker',
+      title: 'ExpenTrack',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF0E8A71),
+          primary: const Color(0xFF0E8A71),
+          secondary: const Color(0xFF00B497),
+        ),
         useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Color(0xFF0E8A71),
+          elevation: 0,
+          centerTitle: true,
+        ),
       ),
       home: const HomeScreen(),
       debugShowCheckedModeBanner: false,
